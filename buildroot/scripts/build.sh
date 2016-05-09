@@ -32,8 +32,12 @@ build_toolchain()
     else
         printf "installing external toolchain\n"
         printf "please wait for a few minutes ...\n"
+	if [ ! -f ${LICHEE_BR_OUT}/../buildroot/dl/gcc-linaro.tar.xz ] ; then
+	wget https://releases.linaro.org/components/toolchain/binaries/4.9-2016.02/arm-linux-gnueabi/gcc-linaro-4.9-2016.02-x86_64_arm-linux-gnueabi.tar.xz -O ${LICHEE_BR_OUT}/../buildroot/dl/gcc-linaro.tar.xz
+	tar xf ${LICHEE_BR_OUT}/../buildroot/dl/gcc-linaro.tar.xz -C ${LICHEE_BR_OUT}/../brandy/gcc-linaro/
+	fi
         tar --strip-components=1 \
-            -jxf ${LICHEE_BR_DIR}/dl/gcc-linaro.tar.bz2 \
+            -xf ${LICHEE_BR_DIR}/dl/gcc-linaro.tar.xz \
             -C ${tooldir}
         [ $? -eq 0 ] && touch ${tooldir}/.installed
     fi
