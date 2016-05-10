@@ -1,3 +1,8 @@
+#!/bin/bash
+
+#Firmware loader for Kernel under 3.8
+#Source: http://rt2x00.serialmonkey.com/phpBB-static/5/t-4594.html
+
 FIRMWARE_DIRS="/lib/firmware /usr/local/lib/firmware"
 
 err() {

@@ -1,6 +1,7 @@
 # stub for immediately telling the kernel that userspace firmware loading
 # failed; necessary to avoid long timeouts with CONFIG_FW_LOADER_USER_HELPER=y
 
-#Kernel 3.4 does not support firmware autoload
+#Firmware loader for Kernel under 3.8
+#Source: http://rt2x00.serialmonkey.com/phpBB-static/5/t-4594.html
 
-SUBSYSTEM=="firmware", ACTION=="add", ATTR{loading}="/usr/bin/firmware.sh"
+ACTION=="add", SUBSYSTEM=="firmware", RUN+="/sbin/firmware.sh"

@@ -1,3 +1,25 @@
+Make Ubuntu rootfs
+
+* Make rootfs directory
+```
+mkdir ubuntu
+cd ubuntu
+sudo dd if=/dev/zero of=ubuntu.img bs=1M count=500
+```
+
+* Create partition
+boot partition: 20 MB
+root partition: 480 MB
+```
+echo -e '\no\nn\np\n\n+20M\nn\np\n\n\nw\n\n' | fdisk ubuntu.img
+```
+
+* Format partition
+```
+sudo losetup -o 2048 /dev/loop0 ubuntu.img
+sudo losetup -o 2048 /dev/loop0 ubuntu.img
+
+```
 
 Reference:
 http://wiki.friendlyarm.com/wiki/index.php/NanoPi_M1
